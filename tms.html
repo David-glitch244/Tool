@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool for 4oo7 temperature data analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body onload="checkLogin(); populateTimes();">
+    <h1>Tool for 4oo7 Temperature Data Analysis</h1>
+    <h2>C Train Data</h2>
+    <div class="buttons">
+        <button class="import-btn" onclick="importExcel()">Import from Excel</button>
+        <button class="show-data-btn" onclick="showData()">Show Data</button>
+        <button class="show-abnormal-btn" onclick="showAbnormal()">Show Abnormal</button>
+        <button class="clear-btn" onclick="clearData()">Clear</button>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+    <div class="time-section">
+        <label for="time-select">Time</label>
+        <select id="time-select" onchange="showData()">
+            <option>All</option>
+        </select>
+        <button class="reset-time-btn" onclick="resetTime()">Reset Time</button>
+    </div>
+    <div id="data-display"></div>
+    <div id="abnormalModal" class="modal">
+        <div class="modal-content">
+            <div class="time-section">
+                <label for="abnormal-time-select">Time</label>
+                <select id="abnormal-time-select" onchange="updateAbnormalDisplay()">
+                    <option>All</option>
+                </select>
+            </div>
+            <div id="abnormal-display"></div>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+    <input type="file" id="file-input" accept=".xlsx, .xls" style="display: none;" onchange="handleFile(this.files)">
+    <script src="script.js"></script>
+</body>
+</html>
